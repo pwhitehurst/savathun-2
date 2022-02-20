@@ -15,8 +15,15 @@ function handleSavathunQuotes(msg) {
       if (triggers.includes(word.toLowerCase())) {
         var num = Math.floor(Math.random() * quotes.length);
         console.log("using quote " + num);
-        msg.reply(quotes[num].phrase);
-        lastMessageTimeMap[msg.guildId] = Date.now();
+        msg.reply(quotes[num].phrase)
+          .then(a => {
+            lastMessageTimeMap[msg.guildId] = Date.now();
+          })
+          .catch(error => {
+            console.log("failed to reply to message");
+            console.error(error);
+
+          });
         break;
       }
     }
