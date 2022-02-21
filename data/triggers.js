@@ -10,6 +10,7 @@ module.exports = {
         'queen',
         'witch',
         'lie',
-        'lies'
+        'lies',
+        'throne'
       ]
 }
