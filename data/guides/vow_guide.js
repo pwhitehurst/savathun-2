@@ -6,8 +6,8 @@ const emoji4 = '4️⃣';
 
 module.exports = {
     activity: {
-        activity_emoji: '🅿️',
-        main_field: { name: 'Vow of the Disciple', value: 'React with 🅿️', inline: true },
+        activity_emoji: '🇵',
+        main_field: { name: 'Vow of the Disciple', value: 'React with 🇵', inline: true },
         main_embed: [
             {
                 title: 'Vow of the Disciple Guide',

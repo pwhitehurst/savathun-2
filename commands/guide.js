@@ -19,26 +19,28 @@ for (const file of guideFiles) {
 
 
 async function handleGuide(message, originalUser, guide) {
-	const reply = await message.reply({ embeds: guide.main_embed, fetchReply: true, failIfNotExists: false });
+	message.reactions.removeAll()
+		.catch(error => console.error('Failed to clear reactions:', error));
+	await message.edit({ embeds: guide.main_embed });
 	const filter = (reaction, user) => {
 		return guide.emoji_used.includes(reaction.emoji.name) && user.id === originalUser.id;
 	};
-	message.delete()
 	for (const e of guide.emoji_used) {
-		reply.react(e)
+		message.react(e)
 			.catch(err => {
 				console.log('failed to react to message', err);
 			});
 	}
 
-	reply.awaitReactions({ filter, max: 1, time: 10000, errors: ['time'] })
+	message.awaitReactions({ filter, max: 1, time: 10000, errors: ['time'] })
 		.then(collected => {
 			encounter = collected.first();
-			reply.reply({ embeds: guide.encounters[encounter.emoji.name], failIfNotExists: false })
-			reply.delete();
+			message.reactions.removeAll()
+				.catch(error => console.error('Failed to clear reactions:', error));
+			message.edit({ embeds: guide.encounters[encounter.emoji.name], failIfNotExists: false })
 		})
 		.catch(collected => {
-			reply.reply({ content: 'Please react with an appropriate emoji', failIfNotExists: false });
+			message.edit({ content: 'Please react with an appropriate emoji', failIfNotExists: false });
 		});
 }
 
@@ -75,8 +77,7 @@ module.exports = {
 				}
 			})
 			.catch(collected => {
-				message.reply({ content: 'You reacted with neither 🇻, nor 🇩.', failIfNotExists: false });
-				message.delete();
+				message.edit({ content: 'You reacted with neither 🇻, nor 🇩.', failIfNotExists: false });
 			});
 	}
 
