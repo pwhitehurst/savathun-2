@@ -55,6 +55,11 @@ module.exports = {
 		.setDescription('Get visual guides for raids')
 	,
 	async execute(interaction) {
+		if (interaction.guildId === '728409870616887319' && (interaction.channel.parentId !== '784554762095558708' && interaction.channelId !== 778025332711620618)) {
+			interaction.reply('`/guide` is disabled in ' + interaction.channel.name);
+			return;
+		}
+			
 		message = await interaction.reply({ embeds: [guideEmbed], fetchReply: true, failIfNotExists: false });
 
 		for (const e of base_emoji) {
@@ -77,7 +82,8 @@ module.exports = {
 				}
 			})
 			.catch(collected => {
-				message.edit({ content: 'You reacted with neither 🇻, nor 🇩.', failIfNotExists: false });
+				message.edit({ content: 'You reacted with neither 🇻, nor 🇩.', failIfNotExists: false })
+					.catch(err => console.log('failed to edit message', err));
 			});
 	}
 
