@@ -67,21 +67,9 @@ module.exports = {
             }],
             '2️⃣': [
                 {
-                    title: 'Vow of the Disciple - Caretaker Floor 1',
+                    title: 'Vow of the Disciple - Caretaker',
                     image: {
-                        url: 'https://cdn.discordapp.com/attachments/950979003492212786/951558023615230082/MH2gzYr.png',
-                    }
-                },
-                {
-                    title: 'Vow of the Disciple - Caretaker Floor 2',
-                    image: {
-                        url: 'https://cdn.discordapp.com/attachments/950979003492212786/951558069836480532/vSWekf9.png',
-                    }
-                },
-                {
-                    title: 'Vow of the Disciple - Caretaker Floor 3',
-                    image: {
-                        url: 'https://cdn.discordapp.com/attachments/950979003492212786/951558119308296222/0S3GhDa.png',
+                        url: 'https://i.imgur.com/U1w3ci0.jpeg',
                     }
                 }
             ],
