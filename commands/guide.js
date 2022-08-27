@@ -55,7 +55,7 @@ module.exports = {
 		.setDescription('Get visual guides for raids')
 	,
 	async execute(interaction) {
-		if (interaction.guildId === '728409870616887319' && (interaction.channel.parentId !== '784554762095558708' && interaction.channelId !== 778025332711620618)) {
+		if (interaction.guildId === '728409870616887319' && (interaction.channel.parentId !== '784554762095558708' && interaction.channelId !== '778025332711620618')) {
 			interaction.reply('`/guide` is disabled in ' + interaction.channel.name);
 			return;
 		}
