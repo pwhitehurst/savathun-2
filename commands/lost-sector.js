@@ -16,7 +16,10 @@ module.exports = {
 		.setName('lost_sector')
 		.setDescription('Replies with today\'s lost sector!'),
 	async execute(interaction) {
-        console.log(lostsectors)
+        if (interaction.guildId === '728409870616887319' && (interaction.channel.parentId !== '784554762095558708' && interaction.channelId !== '778025332711620618')) {
+			interaction.reply('`/lost_sector` is disabled in ' + interaction.channel.name);
+			return;
+		}
         const lost_sectors = [
             "Concealed Void",
             "Bunker E15",
@@ -45,14 +48,12 @@ module.exports = {
         console.log("difference: " + difference);
         let numDays = Math.floor(difference / (1000 * 3600 * 24));
         console.log("Number of days: " + numDays)
-        numDays += 10;
         let lostSectorOffset = numDays % lost_sectors.length;
         console.log("Lost Sector Offset: " + lostSectorOffset)
         let exoticOffset = numDays % exotics.length;
         console.log("Exotics Offset: " + exoticOffset)
         let todaysExotic = exotics[exoticOffset];
         let todaysLS = lostsectors[lost_sectors[lostSectorOffset]];
-        console.log(todaysLS);
         todaysLS[0].title += " - Exotic " + todaysExotic;
         console.log(todaysLS);
 		await interaction.reply({ embeds: todaysLS });
