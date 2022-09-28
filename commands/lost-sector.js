@@ -23,8 +23,8 @@ module.exports = {
         const lost_sectors = [
             "Concealed Void",
             "Bunker E15",
+            "Perdition",
             "The Conflux",
-            "The Rift",
             "K1 Crew Quarters",
             "K1 Logistics",
             "K1 Communion",
